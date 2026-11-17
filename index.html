@@ -1,585 +1,293 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Himawan Pradana</title>
-    
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <!-- AOS Animation -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assset/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nama Anda · Frontend developer</title>
+<meta name="description" content="Portofolio frontend developer junior: JavaScript, antarmuka web, dan proyek freelance selama 2 tahun.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#ECE9E1;--ink:#14130F;--muted:#625E53;--line:rgba(20,19,15,.18);--accent:#E4501A;--curtain:#14130F;
+  --m:rgba(246,178,107,.6);--p:rgba(147,196,125,.6);--c:rgba(111,168,220,.55);
+  --sans:"Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.8,.2,1);--pad:clamp(20px,4vw,56px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--ground:#13120F;--ink:#ECE9E1;--muted:#A29D8F;--line:rgba(236,233,225,.2);--accent:#FF6B35;--curtain:#ECE9E1}
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{background:var(--ground);color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--ground);padding:8px 14px;z-index:99}
+.skip:focus{left:8px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em;text-transform:lowercase}
+
+/* nav */
+header.nav{position:fixed;inset:0 0 auto 0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:calc(14px + env(safe-area-inset-top,0px)) var(--pad) 14px;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav b{font-weight:700;letter-spacing:-.02em}
+.nav ul{display:flex;gap:clamp(14px,3vw,34px);list-style:none;padding:0}
+.nav a{text-decoration:none;font-family:var(--mono);font-size:13px;position:relative;padding:6px 0;display:inline-block}
+.nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+.nav a:hover::after,.nav a[aria-current="true"]::after{transform:scaleX(1)}
+
+section{padding:clamp(80px,12vw,160px) var(--pad)}
+.wrap{max-width:1360px;margin:0 auto}
+
+/* hero */
+.hero{min-height:100svh;padding-top:120px;display:grid;align-items:center}
+.hero .wrap{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;align-items:end;width:100%}
+.hero h1{grid-column:1/8;font-weight:800;font-size:clamp(3.6rem,13.2vw,12.5rem);line-height:.84;letter-spacing:-.065em;margin-left:-.05em}
+.hero h1 span{display:block}
+.hero h1 span:last-child{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.hero .intro{grid-column:1/7;grid-row:2;max-width:34ch;font-size:clamp(1.05rem,1.5vw,1.3rem);margin-top:28px}
+.hero .meta{grid-column:1/7;grid-row:3;display:flex;gap:22px;flex-wrap:wrap;color:var(--muted);margin-top:22px}
+.figure{grid-column:8/13;grid-row:1/4;justify-self:end;width:min(100%,440px);position:relative}
+.rm{background:var(--m);padding:clamp(18px,3vw,30px);position:relative}
+.rm::before{content:"";position:absolute;inset:-8px;border:1px dashed var(--accent);pointer-events:none;animation:breathe 5s ease-in-out infinite}
+.rp{background:var(--p);padding:clamp(12px,2vw,20px)}
+.photo{background:var(--c);aspect-ratio:4/5;position:relative;overflow:hidden;display:grid;place-items:center;text-align:center}
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo .ph{padding:20px;color:var(--ink);font-size:14px}
+.photo .ph strong{display:block;font-size:20px;letter-spacing:-.02em;margin-bottom:6px}
+.up{margin-top:14px;display:flex;justify-content:space-between;gap:12px;align-items:center;color:var(--muted)}
+.btn{font:inherit;font-family:var(--mono);font-size:12.5px;border:1px solid var(--ink);background:transparent;color:var(--ink);padding:9px 14px;cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:color .45s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--ink);transform:translateY(101%);transition:transform .45s var(--ease);z-index:-1}
+.btn:hover,.btn:focus-visible{color:var(--ground)}
+.btn:hover::before,.btn:focus-visible::before{transform:none}
+.dim{position:absolute;font-family:var(--mono);font-size:11px;background:var(--ink);color:var(--ground);padding:2px 6px}
+.dim.t{left:0;top:-12px}.dim.b{right:0;bottom:-12px}
+@keyframes breathe{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.018);opacity:.4}}
+
+/* headings */
+.label{display:flex;gap:14px;align-items:center;color:var(--muted);margin-bottom:36px}
+.label::after{content:"";height:1px;background:var(--line);flex:1}
+h2{font-weight:700;font-size:clamp(2.2rem,6.2vw,5.6rem);line-height:.95;letter-spacing:-.045em;max-width:16ch}
+
+/* about */
+.about .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:24px;margin-top:56px}
+.about p.lead{grid-column:1/7;font-size:clamp(1.15rem,1.9vw,1.55rem);line-height:1.4;letter-spacing:-.01em}
+.steps{grid-column:8/13;list-style:none;padding:0;border-top:1px solid var(--ink)}
+.steps li{padding:20px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:96px 1fr;gap:14px}
+.steps li b{display:block;font-weight:600;letter-spacing:-.01em}
+.steps li span{color:var(--muted)}
+
+/* skills */
+.skills ul{list-style:none;padding:0;margin-top:48px;border-top:1px solid var(--ink)}
+.skills li{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:clamp(14px,2.2vw,26px) 0;border-bottom:1px solid var(--line);font-size:clamp(1.8rem,5.6vw,4.8rem);font-weight:600;letter-spacing:-.045em;line-height:1;transition:padding .5s var(--ease)}
+.skills li:hover{padding-left:clamp(10px,2vw,28px)}
+.skills li em{font:400 13px/1.4 var(--mono);font-style:normal;color:var(--muted);text-align:right;max-width:26ch;letter-spacing:0}
+
+/* work */
+.work ol{list-style:none;padding:0;margin-top:48px;border-top:1px solid var(--ink)}
+.work li a{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr) 56px;gap:24px;align-items:center;padding:clamp(22px,3vw,40px) 0;border-bottom:1px solid var(--line);text-decoration:none}
+.work h3{font-size:clamp(1.6rem,3.6vw,3.2rem);font-weight:650;letter-spacing:-.04em;line-height:1;transition:translate .5s var(--ease)}
+.work a:hover h3,.work a:focus-visible h3{translate:14px 0}
+.work p{color:var(--muted);font-size:15px}
+.work .arr{justify-self:end;width:48px;height:48px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;transition:background .4s var(--ease),color .4s var(--ease),rotate .5s var(--ease)}
+.work a:hover .arr,.work a:focus-visible .arr{background:var(--accent);color:#fff;border-color:var(--accent);rotate:-45deg}
+.tag{display:inline-block;margin-top:8px;color:var(--accent)}
+
+/* contact */
+.contact{background:var(--ink);color:var(--ground);--line:rgba(236,233,225,.25)}
+.contact .label{color:#A29D8F}
+.contact h2{max-width:12ch;font-size:clamp(2.6rem,9vw,8.5rem)}
+.contact .row{display:flex;gap:16px;flex-wrap:wrap;margin-top:48px}
+.contact .btn{border-color:var(--ground);color:var(--ground);padding:14px 22px;font-size:14px}
+.contact .btn::before{background:var(--ground)}
+.contact .btn:hover,.contact .btn:focus-visible{color:var(--ink)}
+footer{margin-top:90px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:#A29D8F;border-top:1px solid var(--line);padding-top:20px}
+
+/* devtools overlay (the signature) */
+#ov{position:fixed;inset:0;pointer-events:none;z-index:30}
+#ov[hidden]{display:none}
+#ov div{position:fixed;left:0;top:0;transition:translate .12s var(--ease),width .12s var(--ease),height .12s var(--ease)}
+#ov .m{background:var(--m)}#ov .p{background:var(--p)}#ov .c{background:var(--c)}
+#ov .t{background:#1b1a16;color:#fff;font:500 11px/1 var(--mono);padding:5px 8px;white-space:nowrap;transition:translate .12s var(--ease)}
+
+.js-motion .rv{opacity:0;translate:0 28px;transition:opacity .9s var(--ease),translate .9s var(--ease)}
+.js-motion .rv.in{opacity:1;translate:0 0}
+
+@media (max-width:820px){
+  .hero{padding-top:104px}
+  .hero .wrap{display:flex;flex-direction:column;align-items:stretch}
+  .hero h1{order:1;font-size:clamp(3.4rem,19vw,7rem)}
+  .figure{order:2;width:min(100%,360px);justify-self:start;margin:28px 0 10px}
+  .hero .intro{order:3;margin-top:18px}.hero .meta{order:4}
+  .about .grid{display:block}.steps{margin-top:40px}
+  .skills li em{display:none}
+  .work li a{grid-template-columns:1fr 48px}.work li p{grid-column:1;grid-row:2}
+  .work .arr{grid-row:1;grid-column:2}
+  .nav ul{gap:14px}.nav b{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation:none!important;transition:none!important}
+}
+</style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
+<a class="skip" href="#main">Lewati ke konten</a>
+
+<header class="nav">
+  <b>Nama Anda</b>
+  <nav aria-label="Utama">
+    <ul>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#keahlian">Keahlian</a></li>
+      <li><a href="#proyek">Proyek</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="main">
+<section class="hero" id="atas">
+  <div class="wrap">
+    <h1 data-box="h1"><span>Nama</span><span>Anda</span></h1>
+    <p class="intro" data-box="p">Frontend developer junior. Saya membangun antarmuka web yang rapi, cepat dibuka, dan nyaman dipakai di ponsel biasa.</p>
+    <div class="meta mono"><span>Tangerang, Indonesia</span><span>Freelance 2 tahun</span><span>Terbuka untuk proyek</span></div>
+
+    <div class="figure">
+      <div class="rm">
+        <span class="dim t" aria-hidden="true">margin 30</span>
+        <div class="rp">
+          <div class="photo" data-box="figure.foto" id="photo">
+            <div class="ph" id="ph"><strong>Foto Anda di sini</strong>Rasio 4:5, wajah di tengah.</div>
+          </div>
+        </div>
+        <span class="dim b" aria-hidden="true">padding 20</span>
+      </div>
+      <div class="up mono">
+        <span>content 4 × 5</span>
+        <label class="btn" for="file" tabindex="0" id="lbl">Pasang foto</label>
+        <input id="file" type="file" accept="image/*" hidden>
+      </div>
     </div>
+  </div>
+</section>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container">
-            <a class="navbar-brand" href="#home" data-aos="fade-down">Himawan Pradana</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="100">
-                        <a class="nav-link" href="#home">Home</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="200">
-                        <a class="nav-link" href="#about">About</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="300">
-                        <a class="nav-link" href="#services">Services</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="400">
-                        <a class="nav-link" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li class="nav-item" data-aos="fade-down" data-aos-delay="500">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<section class="about" id="tentang">
+  <div class="wrap">
+    <div class="label mono rv"><span>tentang</span></div>
+    <h2 class="rv" data-box="h2">Dari ruang kelas RPL ke layar pelanggan.</h2>
+    <div class="grid">
+      <p class="lead rv" data-box="p">Saya mulai dari jurusan Rekayasa Perangkat Lunak di SMKN 4 Kota Tangerang, lalu mengerjakan proyek freelance sambil melanjutkan kuliah. Dua tahun terakhir saya belajar paling banyak dari satu hal: pengguna tidak membaca kode, mereka merasakan kecepatan dan kejelasan.</p>
+      <ol class="steps rv">
+        <li data-box="li"><span class="mono">sekolah</span><div><b>SMKN 4 Kota Tangerang</b><span>Rekayasa Perangkat Lunak</span></div></li>
+        <li data-box="li"><span class="mono">freelance</span><div><b>Frontend developer</b><span>2 tahun mengerjakan proyek klien</span></div></li>
+        <li data-box="li"><span class="mono">kuliah</span><div><b>Universitas Bina Sarana Informatika</b><span>Sedang berjalan</span></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <div class="hero-content">
-                        <h1 data-aos="fade-up">
-                            Hello, I'm <span class="text-accent">Himawan Pradana</span>
-                        </h1>
-                        <p data-aos="fade-up" data-aos-delay="200">
-                            Full Stack Developer & UI/UX Designer passionate about creating beautiful and functional digital experiences.
-                        </p>
-                        <div data-aos="fade-up" data-aos-delay="400">
-                            <a href="#portfolio" class="btn-custom me-3">View My Work</a>
-                            <a href="#contact" class="btn-outline-custom">Get In Touch</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="hero-image text-center">
-                        <img src="assset/image/photo.jpg" 
-                             alt="Profile" class="img-fluid" style="width: 400px; height: 400px; object-fit: cover;">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="skills" id="keahlian">
+  <div class="wrap">
+    <div class="label mono rv"><span>keahlian</span></div>
+    <h2 class="rv" data-box="h2">Alat yang saya pakai tiap hari.</h2>
+    <ul class="rv">
+      <li data-box="li">JavaScript <em>logika, DOM, state, fetch</em></li>
+      <li data-box="li">Frontend <em>halaman responsif dan aksesibel</em></li>
+      <li data-box="li">Deploy <em>rilis ke Vercel</em></li>
+    </ul>
+  </div>
+</section>
 
-    <!-- About Section -->
-    <section class="about section" id="about">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">About Me</h2>
-            <div class="row">
-                <div class="col-lg-6" data-aos="fade-right">
-                    <div class="about-text">
-                        <p>
-                            I'm a passionate Full Stack Developer with over 5 years of experience in creating 
-                            digital solutions. I specialize in modern web technologies and love turning 
-                            complex problems into simple, beautiful designs.
-                        </p>
-                        <p>
-                            When I'm not coding, you can find me exploring new technologies, contributing to 
-                            open-source projects, or sharing my knowledge through blog posts and mentoring.
-                        </p>
-                        <a href="#" class="btn-custom">Download CV</a>
-                    </div>
-                </div>
-                <div class="col-lg-6" data-aos="fade-left">
-                    <h4 class="mb-4">Skills & Technologies</h4>
-                    <ul class="skills-list">
-                        <li><i class="fas fa-check"></i> JavaScript (ES6+), TypeScript</li>
-                        <li><i class="fas fa-check"></i> React.js, Vue.js, Angular</li>
-                        <li><i class="fas fa-check"></i> Node.js, Express.js, Python</li>
-                        <li><i class="fas fa-check"></i> MongoDB, PostgreSQL, MySQL</li>
-                        <li><i class="fas fa-check"></i> AWS, Docker, Kubernetes</li>
-                        <li><i class="fas fa-check"></i> UI/UX Design, Figma, Adobe XD</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="work" id="proyek">
+  <div class="wrap">
+    <div class="label mono rv"><span>proyek terpilih</span></div>
+    <h2 class="rv" data-box="h2">Hal-hal yang sudah berjalan di internet.</h2>
+    <ol class="rv">
+      <li data-box="li"><a href="#kontak"><h3>Website kasir dan CMS</h3><p>Dua sisi dalam satu sistem: halaman untuk pelanggan dan halaman untuk staf kasir, dikelola lewat CMS dan di-host di Vercel.<br><span class="tag mono">proyek nyata, tambahkan tautan dan tangkapan layar</span></p><span class="arr" aria-hidden="true">→</span></a></li>
+      <li data-box="li"><a href="#kontak"><h3>Proyek klien kedua</h3><p>Ganti dengan satu proyek freelance Anda: masalahnya, peran Anda, hasilnya.<br><span class="tag mono">contoh, ganti</span></p><span class="arr" aria-hidden="true">→</span></a></li>
+      <li data-box="li"><a href="#kontak"><h3>Proyek ketiga</h3><p>Tulis angka yang benar saja, misalnya waktu muat atau jumlah halaman.<br><span class="tag mono">contoh, ganti</span></p><span class="arr" aria-hidden="true">→</span></a></li>
+    </ol>
+  </div>
+</section>
 
-    <!-- Services Section -->
-    <section class="services section" id="services">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">My Services</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <h4>Web Development</h4>
-                        <p>Creating responsive, fast, and scalable web applications using modern technologies and best practices.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-mobile-alt"></i>
-                        </div>
-                        <h4>Mobile Development</h4>
-                        <p>Building cross-platform mobile applications that deliver excellent user experience across all devices.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-paint-brush"></i>
-                        </div>
-                        <h4>UI/UX Design</h4>
-                        <p>Designing intuitive and aesthetically pleasing interfaces that provide exceptional user experiences.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-server"></i>
-                        </div>
-                        <h4>Backend Development</h4>
-                        <p>Developing robust server-side applications with secure APIs and efficient database management.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <h4>Cloud Solutions</h4>
-                        <p>Implementing cloud infrastructure and DevOps practices for scalable and reliable applications.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="600">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-chart-line"></i>
-                        </div>
-                        <h4>SEO Optimization</h4>
-                        <p>Optimizing websites for search engines to improve visibility and drive organic traffic.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section class="contact" id="kontak">
+  <div class="wrap">
+    <div class="label mono rv"><span>kontak</span></div>
+    <h2 class="rv" data-box="h2">Punya halaman yang perlu dibangun?</h2>
+    <div class="row rv">
+      <a class="btn" href="mailto:email@contoh.com">email@contoh.com</a>
+      <a class="btn" href="https://github.com/">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/">LinkedIn</a>
+    </div>
+    <footer class="mono"><span>Dibuat dengan HTML, CSS, dan JavaScript murni.</span><span>Arahkan kursor ke elemen mana saja untuk mengukurnya.</span></footer>
+  </div>
+</section>
+</main>
 
-    <!-- Portfolio Section -->
-    <section class="portfolio section" id="portfolio">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">My Portfolio</h2>
-            <div class="row">
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop" alt="Project 1">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h4>E-Commerce Platform</h4>
-                                <p>Full-stack e-commerce solution with React & Node.js</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=400&fit=crop" alt="Project 2">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h4>Task Management App</h4>
-                                <p>Modern productivity app with real-time collaboration</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop" alt="Project 3">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h4>Social Media Dashboard</h4>
-                                <p>Analytics dashboard with data visualization</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&h=400&fit=crop" alt="Project 4">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h4>Restaurant Website</h4>
-                                <p>Responsive website with online ordering system</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop" alt="Project 5">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h4>Finance Tracker</h4>
-                                <p>Personal finance management mobile app</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-                    <div class="portfolio-item">
-                        <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&h=400&fit=crop" alt="Project 6">
-                        <div class="portfolio-overlay">
-                            <div class="portfolio-content">
-                                <h4>Learning Platform</h4>
-                                <p>Online education platform with video streaming</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<div id="ov" hidden aria-hidden="true"><div class="m"></div><div class="p"></div><div class="c"></div><div class="t"></div></div>
 
-    <!-- Contact Section -->
-    <section class="contact section" id="contact">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
-            <div class="row">
-                <div class="col-lg-8" data-aos="fade-right">
-                    <form class="contact-form">
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="Subject" required>
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-custom">Send Message</button>
-                    </form>
-                </div>
-                <div class="col-lg-4" data-aos="fade-left">
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h5>Address</h5>
-                                <p>Tangerang, Indonesia</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h5>Email</h5>
-                                <p>himawanpradana1@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="social-links">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="https://gitlab.com/wanss_git"><i class="fab fa-github"></i></a>
-                            <a href="https://www.tiktok.com/@its.me.wanss?_t=ZS-8zaIa46tKRI&_r=1"><i class="fab fa-tiktok"></i></a>
-                            <a href="https://www.instagram.com/hmwn.prdana_?igsh=Yzh6bnM0eHJzMHBv"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=matchMedia('(hover:hover) and (pointer:fine)').matches;
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved. Built with ❤️ and Bootstrap.</p>
-        </div>
-    </footer>
+  /* reveals */
+  if(!reduce&&'IntersectionObserver' in window){
+    document.documentElement.classList.add('js-motion');
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+  }
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
+  /* current section in nav */
+  if('IntersectionObserver' in window){
+    var links=[].slice.call(document.querySelectorAll('.nav a'));
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){links.forEach(function(a){a.setAttribute('aria-current',a.getAttribute('href')==='#'+e.target.id?'true':'false')})}
+    })},{rootMargin:'-45% 0px -50% 0px'});
+    document.querySelectorAll('main section[id]').forEach(function(s){so.observe(s)});
+  }
 
-        // Loading Screen
-        window.addEventListener('load', function() {
-            const loading = document.getElementById('loading');
-            setTimeout(() => {
-                loading.classList.add('hide');
-            }, 1000);
-        });
+  /* photo upload (stays in the browser, nothing is sent) */
+  var f=document.getElementById('file'),lbl=document.getElementById('lbl');
+  lbl.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();f.click()}});
+  f.addEventListener('change',function(){
+    var file=f.files&&f.files[0];if(!file)return;
+    var r=new FileReader();
+    r.onload=function(){
+      var box=document.getElementById('photo');
+      var old=box.querySelector('img');if(old)old.remove();
+      var im=new Image();im.alt='Foto profil';im.src=r.result;box.appendChild(im);
+      var ph=document.getElementById('ph');if(ph)ph.style.display='none';
+    };
+    r.readAsDataURL(file);
+  });
 
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    const offsetTop = target.offsetTop - 80;
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.15)';
-            } else {
-                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
-            }
-        });
-
-        // Active Navigation Link
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Form Submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const name = this.querySelector('input[placeholder="Your Name"]').value;
-            const email = this.querySelector('input[placeholder="Your Email"]').value;
-            const subject = this.querySelector('input[placeholder="Subject"]').value;
-            const message = this.querySelector('textarea').value;
-            
-            // Simple validation
-            if (!name || !email || !subject || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Sending...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Thank you for your message! I\'ll get back to you soon.');
-                this.reset();
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }, 2000);
-        });
-
-        // Portfolio Item Hover Effect
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-10px) scale(1.02)';
-            });
-            
-            item.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Service Card Animation
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                const icon = this.querySelector('.service-icon');
-                icon.style.transform = 'rotate(360deg) scale(1.1)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                const icon = this.querySelector('.service-icon');
-                icon.style.transform = 'rotate(0deg) scale(1)';
-            });
-        });
-
-        // Typing Effect for Hero Title
-        function typeWriter(element, text, speed = 100) {
-            let i = 0;
-            element.innerHTML = '';
-            
-            function type() {
-                if (i < text.length) {
-                    element.innerHTML += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                }
-            }
-            type();
-        }
-
-        // Initialize typing effect after page load
-        setTimeout(() => {
-            const heroTitle = document.querySelector('.hero h1');
-            if (heroTitle) {
-                const originalText = heroTitle.textContent;
-                typeWriter(heroTitle, originalText, 80);
-            }
-        }, 1500);
-
-
-
-        // Skills Animation on Scroll
-        function animateSkills() {
-            const skillsSection = document.querySelector('#about');
-            const skillsItems = document.querySelectorAll('.skills-list li');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        skillsItems.forEach((skill, index) => {
-                            setTimeout(() => {
-                                skill.style.opacity = '1';
-                                skill.style.transform = 'translateX(0)';
-                            }, index * 200);
-                        });
-                        observer.unobserve(entry.target);
-                    }
-                });
-            });
-            
-            // Set initial styles
-            skillsItems.forEach(skill => {
-                skill.style.opacity = '0';
-                skill.style.transform = 'translateX(-50px)';
-                skill.style.transition = 'all 0.6s ease';
-            });
-            
-            if (skillsSection) {
-                observer.observe(skillsSection);
-            }
-        }
-
-        // Initialize skills animation
-        animateSkills();
-
-        // Counter Animation
-        function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            
-            counters.forEach(counter => {
-                const target = +counter.getAttribute('data-target');
-                const count = +counter.innerText;
-                const increment = target / 200;
-                
-                if (count < target) {
-                    counter.innerText = Math.ceil(count + increment);
-                    setTimeout(() => animateCounters(), 1);
-                } else {
-                    counter.innerText = target;
-                }
-            });
-        }
-
-        // Mobile Menu Close on Link Click
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                if (navbarCollapse.classList.contains('show')) {
-                    const bsCollapse = new bootstrap.Collapse(navbarCollapse);
-                    bsCollapse.hide();
-                }
-            });
-        });
-
-        // Add scroll to top button
-        const scrollToTopBtn = document.createElement('button');
-        scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        scrollToTopBtn.className = 'scroll-to-top';
-        scrollToTopBtn.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border: none;
-            border-radius: 50%;
-            background: var(--accent-color);
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-        `;
-        
-        document.body.appendChild(scrollToTopBtn);
-        
-        // Show/hide scroll to top button
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                scrollToTopBtn.style.opacity = '1';
-                scrollToTopBtn.style.visibility = 'visible';
-            } else {
-                scrollToTopBtn.style.opacity = '0';
-                scrollToTopBtn.style.visibility = 'hidden';
-            }
-        });
-        
-        // Scroll to top functionality
-        scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Add hover effect to scroll to top button
-        scrollToTopBtn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px) scale(1.1)';
-            this.style.boxShadow = '0 6px 20px rgba(52, 152, 219, 0.4)';
-        });
-        
-        scrollToTopBtn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-            this.style.boxShadow = '0 4px 12px rgba(52, 152, 219, 0.3)';
-        });
-    </script>
+  /* signature: devtools-style box model overlay on hover */
+  if(!fine||reduce)return;
+  var ov=document.getElementById('ov'),M=ov.children[0],P=ov.children[1],C=ov.children[2],T=ov.children[3],cur=null;
+  function put(el,x,y,w,h){el.style.translate=x+'px '+y+'px';el.style.width=w+'px';el.style.height=h+'px'}
+  function n(s,k){return parseFloat(s[k])||0}
+  function draw(t){
+    var r=t.getBoundingClientRect(),s=getComputedStyle(t);
+    var ml=n(s,'marginLeft'),mr=n(s,'marginRight'),mt=n(s,'marginTop'),mb=n(s,'marginBottom');
+    var pl=n(s,'paddingLeft'),pr=n(s,'paddingRight'),pt=n(s,'paddingTop'),pb=n(s,'paddingBottom');
+    put(M,r.left-ml,r.top-mt,r.width+ml+mr,r.height+mt+mb);
+    put(P,r.left,r.top,r.width,r.height);
+    put(C,r.left+pl,r.top+pt,Math.max(0,r.width-pl-pr),Math.max(0,r.height-pt-pb));
+    T.textContent=t.dataset.box+'  '+Math.round(r.width)+' × '+Math.round(r.height);
+    T.style.translate=Math.max(4,r.left)+'px '+Math.max(4,r.top-mt-24)+'px';
+    ov.hidden=false;
+  }
+  addEventListener('pointermove',function(e){
+    var t=e.target.closest?e.target.closest('[data-box]'):null;
+    if(t===cur)return;cur=t;
+    if(t)draw(t);else ov.hidden=true;
+  },{passive:true});
+  addEventListener('scroll',function(){cur=null;ov.hidden=true},{passive:true});
+})();
+</script>
 </body>
 </html>
